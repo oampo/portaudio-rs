@@ -44,12 +44,12 @@
 <h1 class='fqn'><span class='in-band'>Crate <a class='mod' href=''>portaudio</a><wbr></span><span class='out-of-band'><a href='stability.html'>[stability]</a> <span id='render-detail'>
             <a id="collapse-all" href="#">[-]
             </a>&nbsp;<a id="expand-all" href="#">[+]</a>
-        </span><a id='src-0' href='../src/portaudio/home/travis/build/mvdnes/portaudio-rs/src/lib.rs.html#1-53'>[src]</a></span></h1>
+        </span><a id='src-0' href='../src/portaudio/home/travis/build/mvdnes/portaudio-rs/src/lib.rs.html#1-55'>[src]</a></span></h1>
 <div class='docblock'><p>PortAudio bindings for Rust</p>
 
 <h1 id="example" class='section-header'><a
                            href="#example">Example</a></h1><pre class='rust '>
-<span class='kw'>fn</span> <span class='ident'>demo</span>() <span class='op'>-&gt;</span> <span class='ident'>portaudio</span>::<span class='ident'>pa</span>::<span class='ident'>PaResult</span>
+<span class='kw'>fn</span> <span class='ident'>demo</span>() <span class='op'>-&gt;</span> <span class='ident'>portaudio</span>::<span class='ident'>PaResult</span>
 {
     <span class='kw'>let</span> <span class='ident'>stream</span> <span class='op'>=</span> <span class='macro'>try</span><span class='macro'>!</span>(<span class='ident'>portaudio</span>::<span class='ident'>stream</span>::<span class='ident'>Stream</span>::<span class='ident'>open_default</span>(
                           <span class='number'>0</span>, <span class='comment'>// input channels</span>
@@ -77,11 +77,12 @@
     <span class='prelude-val'>Ok</span>(())
 }
 
-<span class='ident'>portaudio</span>::<span class='ident'>pa</span>::<span class='ident'>initialize</span>().<span class='ident'>unwrap</span>();
+<span class='ident'>portaudio</span>::<span class='ident'>initialize</span>().<span class='ident'>unwrap</span>();
 <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;{}&quot;</span>, <span class='ident'>demo</span>());
-<span class='ident'>portaudio</span>::<span class='ident'>pa</span>::<span class='ident'>terminate</span>().<span class='ident'>unwrap</span>();
+<span class='ident'>portaudio</span>::<span class='ident'>terminate</span>().<span class='ident'>unwrap</span>();
 </pre>
-</div><h2 id='modules' class='section-header'><a href="#modules">Modules</a></h2>
+</div><h2 id='reexports' class='section-header'><a href="#reexports">Reexports</a></h2>
+<table><tr><td><code>pub use pa::{<a class='enum' href='../portaudio/pa/enum.PaError.html' title='portaudio::pa::PaError'>PaError</a>, <a class='type' href='../portaudio/pa/type.PaResult.html' title='portaudio::pa::PaResult'>PaResult</a>, <a class='fn' href='../portaudio/pa/fn.initialize.html' title='portaudio::pa::initialize'>initialize</a>, <a class='fn' href='../portaudio/pa/fn.terminate.html' title='portaudio::pa::terminate'>terminate</a>, <a class='fn' href='../portaudio/pa/fn.version.html' title='portaudio::pa::version'>version</a>, <a class='fn' href='../portaudio/pa/fn.version_text.html' title='portaudio::pa::version_text'>version_text</a>};</code></td></tr></table><h2 id='modules' class='section-header'><a href="#modules">Modules</a></h2>
 <table>
                     <tr>
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='mod' href='device/index.html'

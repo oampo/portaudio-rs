@@ -93,6 +93,8 @@
 <span id='51'>51</span>
 <span id='52'>52</span>
 <span id='53'>53</span>
+<span id='54'>54</span>
+<span id='55'>55</span>
 </pre><pre class='rust '>
 <span class='attribute'>#<span class='op'>!</span>[<span class='ident'>crate_type</span> <span class='op'>=</span> <span class='string'>&quot;lib&quot;</span>]</span>
 <span class='attribute'>#<span class='op'>!</span>[<span class='ident'>crate_name</span> <span class='op'>=</span> <span class='string'>&quot;portaudio&quot;</span>]</span>
@@ -104,7 +106,7 @@
 <span class='doccomment'>//! # Example</span>
 <span class='doccomment'>//!</span>
 <span class='doccomment'>//! ```</span>
-<span class='doccomment'>//! fn demo() -&gt; portaudio::pa::PaResult</span>
+<span class='doccomment'>//! fn demo() -&gt; portaudio::PaResult</span>
 <span class='doccomment'>//! {</span>
 <span class='doccomment'>//!     let stream = try!(portaudio::stream::Stream::open_default(</span>
 <span class='doccomment'>//!                           0, // input channels</span>
@@ -132,13 +134,15 @@
 <span class='doccomment'>//!     Ok(())</span>
 <span class='doccomment'>//! }</span>
 <span class='doccomment'>//!</span>
-<span class='doccomment'>//! portaudio::pa::initialize().unwrap();</span>
+<span class='doccomment'>//! portaudio::initialize().unwrap();</span>
 <span class='doccomment'>//! println!(&quot;{}&quot;, demo());</span>
-<span class='doccomment'>//! portaudio::pa::terminate().unwrap();</span>
+<span class='doccomment'>//! portaudio::terminate().unwrap();</span>
 <span class='doccomment'>//! ```</span>
 
 <span class='kw'>extern</span> <span class='kw'>crate</span> <span class='ident'>libc</span>;
 <span class='attribute'>#[<span class='ident'>phase</span>(<span class='ident'>plugin</span>, <span class='ident'>link</span>)]</span> <span class='kw'>extern</span> <span class='kw'>crate</span> <span class='ident'>log</span>;
+
+<span class='kw'>pub</span> <span class='kw'>use</span> <span class='ident'>pa</span>::{<span class='ident'>PaError</span>, <span class='ident'>PaResult</span>, <span class='ident'>initialize</span>, <span class='ident'>terminate</span>, <span class='ident'>version</span>, <span class='ident'>version_text</span>};
 
 <span class='kw'>pub</span> <span class='kw'>mod</span> <span class='ident'>stream</span>;
 <span class='kw'>pub</span> <span class='kw'>mod</span> <span class='ident'>pa</span>;
