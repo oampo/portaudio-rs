@@ -775,7 +775,7 @@
     <span class='kw'>let</span> <span class='ident'>result</span> <span class='op'>=</span> <span class='kw'>match</span> <span class='ident'>stream_data</span>.<span class='ident'>callback</span>
     {
         <span class='prelude-val'>Some</span>(<span class='kw-2'>ref</span> <span class='kw-2'>mut</span> <span class='ident'>f</span>) <span class='op'>=&gt;</span> (<span class='op'>*</span><span class='ident'>f</span>)(<span class='ident'>input_buffer</span>, <span class='ident'>output_buffer</span>, <span class='ident'>timeinfo</span>, <span class='ident'>flags</span>),
-        <span class='prelude-val'>None</span> <span class='op'>=&gt;</span> <span class='ident'>Abort</span>,
+        <span class='prelude-val'>None</span> <span class='op'>=&gt;</span> <span class='ident'>StreamCallbackResult</span>::<span class='ident'>Abort</span>,
     };
 
     <span class='kw'>unsafe</span> { <span class='ident'>mem</span>::<span class='ident'>forget</span>(<span class='ident'>stream_data</span>); }
@@ -1036,13 +1036,13 @@
     {
         <span class='kw'>if</span> <span class='self'>self</span>.<span class='ident'>outputs</span> <span class='op'>==</span> <span class='number'>0</span>
         {
-            <span class='kw'>return</span> <span class='prelude-val'>Err</span>(::<span class='ident'>pa</span>::<span class='ident'>CanNotWriteToAnInputOnlyStream</span>)
+            <span class='kw'>return</span> <span class='prelude-val'>Err</span>(<span class='ident'>PaError</span>::<span class='ident'>CanNotWriteToAnInputOnlyStream</span>)
         }
 
         <span class='comment'>// Ensure the buffer is the correct size.</span>
         <span class='kw'>if</span> <span class='ident'>buffer</span>.<span class='ident'>len</span>() <span class='op'>%</span> <span class='self'>self</span>.<span class='ident'>outputs</span> <span class='op'>!=</span> <span class='number'>0</span>
         {
-            <span class='kw'>return</span> <span class='prelude-val'>Err</span>(::<span class='ident'>pa</span>::<span class='ident'>BadBufferPtr</span>)
+            <span class='kw'>return</span> <span class='prelude-val'>Err</span>(<span class='ident'>PaError</span>::<span class='ident'>BadBufferPtr</span>)
         }
 
         <span class='kw'>let</span> <span class='ident'>pointer</span> <span class='op'>=</span> <span class='ident'>buffer</span>.<span class='ident'>as_ptr</span>() <span class='kw'>as</span> <span class='op'>*</span><span class='kw'>const</span> <span class='ident'>c_void</span>;
@@ -1057,7 +1057,7 @@
     <span class='doccomment'>/// Will return `CanNotReadFromAnOutputOnlyStream` if num_input_channels = 0.</span>
     <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>read</span>(<span class='kw-2'>&amp;</span><span class='self'>self</span>, <span class='ident'>frames</span>: <span class='ident'>uint</span>) <span class='op'>-&gt;</span> <span class='prelude-ty'>Result</span><span class='op'>&lt;</span><span class='ident'>Vec</span><span class='op'>&lt;</span><span class='ident'>I</span><span class='op'>&gt;</span>, <span class='ident'>PaError</span><span class='op'>&gt;</span>
     {
-        <span class='kw'>if</span> <span class='self'>self</span>.<span class='ident'>inputs</span> <span class='op'>==</span> <span class='number'>0</span> { <span class='kw'>return</span> <span class='prelude-val'>Err</span>(::<span class='ident'>pa</span>::<span class='ident'>CanNotReadFromAnOutputOnlyStream</span>) }
+        <span class='kw'>if</span> <span class='self'>self</span>.<span class='ident'>inputs</span> <span class='op'>==</span> <span class='number'>0</span> { <span class='kw'>return</span> <span class='prelude-val'>Err</span>(<span class='ident'>PaError</span>::<span class='ident'>CanNotReadFromAnOutputOnlyStream</span>) }
 
         <span class='comment'>// We create a buffer with the needed capacity. Then we feed that to the library, which</span>
         <span class='comment'>// will fill the buffer accordingly. Afterwards, we set the length of the vector as all its</span>

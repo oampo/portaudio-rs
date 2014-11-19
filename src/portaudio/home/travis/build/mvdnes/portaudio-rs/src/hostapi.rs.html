@@ -266,7 +266,7 @@
     {
         <span class='ident'>HostApiInfo</span>
         {
-            <span class='ident'>api_type</span>: <span class='ident'>FromPrimitive</span>::<span class='ident'>from_u32</span>(<span class='ident'>input</span>.<span class='ident'>_type</span>).<span class='ident'>unwrap_or</span>(<span class='ident'>Unknown</span>),
+            <span class='ident'>api_type</span>: <span class='ident'>FromPrimitive</span>::<span class='ident'>from_u32</span>(<span class='ident'>input</span>.<span class='ident'>_type</span>).<span class='ident'>unwrap_or</span>(<span class='ident'>HostApiType</span>::<span class='ident'>Unknown</span>),
             <span class='ident'>name</span>: <span class='macro'>format</span><span class='macro'>!</span>(<span class='string'>&quot;{}&quot;</span>, <span class='kw'>unsafe</span> { <span class='ident'>CString</span>::<span class='ident'>new</span>(<span class='ident'>input</span>.<span class='ident'>name</span>, <span class='boolval'>false</span>) }),
             <span class='ident'>device_count</span>: <span class='ident'>input</span>.<span class='ident'>deviceCount</span> <span class='kw'>as</span> <span class='ident'>int</span>,
             <span class='ident'>default_input</span>: <span class='kw'>match</span> <span class='ident'>input</span>.<span class='ident'>defaultInputDevice</span> { <span class='ident'>n</span> <span class='kw'>if</span> <span class='ident'>n</span> <span class='op'>&gt;=</span> <span class='number'>0</span> <span class='op'>=&gt;</span> <span class='prelude-val'>Some</span>(<span class='ident'>n</span> <span class='kw'>as</span> <span class='ident'>int</span>), _ <span class='op'>=&gt;</span> <span class='prelude-val'>None</span> },
@@ -296,7 +296,7 @@
         {
             <span class='ident'>code</span>: <span class='ident'>input</span>.<span class='ident'>errorCode</span> <span class='kw'>as</span> <span class='ident'>int</span>,
             <span class='ident'>text</span>: <span class='macro'>format</span><span class='macro'>!</span>(<span class='string'>&quot;{}&quot;</span>, <span class='kw'>unsafe</span> { <span class='ident'>CString</span>::<span class='ident'>new</span>(<span class='ident'>input</span>.<span class='ident'>errorText</span>, <span class='boolval'>false</span>) }),
-            <span class='ident'>api_type</span>: <span class='ident'>FromPrimitive</span>::<span class='ident'>from_u32</span>(<span class='ident'>input</span>.<span class='ident'>hostApiType</span>).<span class='ident'>unwrap_or</span>(<span class='ident'>Unknown</span>),
+            <span class='ident'>api_type</span>: <span class='ident'>FromPrimitive</span>::<span class='ident'>from_u32</span>(<span class='ident'>input</span>.<span class='ident'>hostApiType</span>).<span class='ident'>unwrap_or</span>(<span class='ident'>HostApiType</span>::<span class='ident'>Unknown</span>),
         }
     }
 }
