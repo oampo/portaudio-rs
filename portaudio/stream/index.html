@@ -100,71 +100,82 @@
                 </table><h2 id='constants' class='section-header'><a href="#constants">Constants</a></h2>
 <table>
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub const CLIP_OFF: <a class='struct' href='../../portaudio/stream/struct.StreamFlags.html' title='portaudio::stream::StreamFlags'>StreamFlags</a></code><code> = </code><code>BitFlags { bits: $value }</code></td>
-                        <td class='docblock'><p>Disable clipping of out of range samples</p>
-&nbsp;</td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.CLIP_OFF.html'
+                               title='portaudio::stream::CLIP_OFF'>CLIP_OFF</a></td>
+                        <td class='docblock short'><p>Disable clipping of out of range samples</p>
+</td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub const DITHER_OFF: <a class='struct' href='../../portaudio/stream/struct.StreamFlags.html' title='portaudio::stream::StreamFlags'>StreamFlags</a></code><code> = </code><code>BitFlags { bits: $value }</code></td>
-                        <td class='docblock'><p>Disable dithering</p>
-&nbsp;</td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.DITHER_OFF.html'
+                               title='portaudio::stream::DITHER_OFF'>DITHER_OFF</a></td>
+                        <td class='docblock short'><p>Disable dithering</p>
+</td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub const INPUT_OVERFLOW: <a class='struct' href='../../portaudio/stream/struct.StreamCallbackFlags.html' title='portaudio::stream::StreamCallbackFlags'>StreamCallbackFlags</a></code><code> = </code><code>BitFlags { bits: $value }</code></td>
-                        <td class='docblock'><p>Indicates that the callback has discarded some data</p>
-&nbsp;</td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.INPUT_OVERFLOW.html'
+                               title='portaudio::stream::INPUT_OVERFLOW'>INPUT_OVERFLOW</a></td>
+                        <td class='docblock short'><p>Indicates that the callback has discarded some data</p>
+</td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub const INPUT_UNDERFLOW: <a class='struct' href='../../portaudio/stream/struct.StreamCallbackFlags.html' title='portaudio::stream::StreamCallbackFlags'>StreamCallbackFlags</a></code><code> = </code><code>BitFlags { bits: $value }</code></td>
-                        <td class='docblock'><p>Indicates that the callback has inserted one or more zeroes since not enough data was available</p>
-&nbsp;</td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.INPUT_UNDERFLOW.html'
+                               title='portaudio::stream::INPUT_UNDERFLOW'>INPUT_UNDERFLOW</a></td>
+                        <td class='docblock short'><p>Indicates that the callback has inserted one or more zeroes since not enough data was available</p>
+</td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub const NEVER_DROP_INPUT: <a class='struct' href='../../portaudio/stream/struct.StreamFlags.html' title='portaudio::stream::StreamFlags'>StreamFlags</a></code><code> = </code><code>BitFlags { bits: $value }</code></td>
-                        <td class='docblock'><p>Request that a full duplex stream will not discard overflowed input samples. The frames_per_buffer must be set to unspecified (0)</p>
-&nbsp;</td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.NEVER_DROP_INPUT.html'
+                               title='portaudio::stream::NEVER_DROP_INPUT'>NEVER_DROP_INPUT</a></td>
+                        <td class='docblock short'><p>Request that a full duplex stream will not discard overflowed input samples. The frames_per_buffer must be set to unspecified (0)</p>
+</td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub const OUTPUT_OVERFLOW: <a class='struct' href='../../portaudio/stream/struct.StreamCallbackFlags.html' title='portaudio::stream::StreamCallbackFlags'>StreamCallbackFlags</a></code><code> = </code><code>BitFlags { bits: $value }</code></td>
-                        <td class='docblock'><p>Indicates that certain data was discarded since there was no room</p>
-&nbsp;</td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.OUTPUT_OVERFLOW.html'
+                               title='portaudio::stream::OUTPUT_OVERFLOW'>OUTPUT_OVERFLOW</a></td>
+                        <td class='docblock short'><p>Indicates that certain data was discarded since there was no room</p>
+</td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub const OUTPUT_UNDERFLOW: <a class='struct' href='../../portaudio/stream/struct.StreamCallbackFlags.html' title='portaudio::stream::StreamCallbackFlags'>StreamCallbackFlags</a></code><code> = </code><code>BitFlags { bits: $value }</code></td>
-                        <td class='docblock'><p>Indicates that extra data was inserted in the output since there was not engough available</p>
-&nbsp;</td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.OUTPUT_UNDERFLOW.html'
+                               title='portaudio::stream::OUTPUT_UNDERFLOW'>OUTPUT_UNDERFLOW</a></td>
+                        <td class='docblock short'><p>Indicates that extra data was inserted in the output since there was not engough available</p>
+</td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub const PLATFORM_SPECIFIC: <a class='struct' href='../../portaudio/stream/struct.StreamFlags.html' title='portaudio::stream::StreamFlags'>StreamFlags</a></code><code> = </code><code>BitFlags { bits: $value }</code></td>
-                        <td class='docblock'><p>Range for platform specific flags. Not all of the upper 16 bits need to be set at the same time.</p>
-&nbsp;</td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.PLATFORM_SPECIFIC.html'
+                               title='portaudio::stream::PLATFORM_SPECIFIC'>PLATFORM_SPECIFIC</a></td>
+                        <td class='docblock short'><p>Range for platform specific flags. Not all of the upper 16 bits need to be set at the same time.</p>
+</td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub const PRIME_OUTPUT_BUFFERS_USING_STREAM_CALLBACK: <a class='struct' href='../../portaudio/stream/struct.StreamFlags.html' title='portaudio::stream::StreamFlags'>StreamFlags</a></code><code> = </code><code>BitFlags { bits: $value }</code></td>
-                        <td class='docblock'><p>Call the stream callback to fill initial output buffers, rather than priming the buffers with silence</p>
-&nbsp;</td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.PRIME_OUTPUT_BUFFERS_USING_STREAM_CALLBACK.html'
+                               title='portaudio::stream::PRIME_OUTPUT_BUFFERS_USING_STREAM_CALLBACK'>PRIME_OUTPUT_BUFFERS_USING_STREAM_CALLBACK</a></td>
+                        <td class='docblock short'><p>Call the stream callback to fill initial output buffers, rather than priming the buffers with silence</p>
+</td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub const PRIMING_OUTPUT: <a class='struct' href='../../portaudio/stream/struct.StreamCallbackFlags.html' title='portaudio::stream::StreamCallbackFlags'>StreamCallbackFlags</a></code><code> = </code><code>BitFlags { bits: $value }</code></td>
-                        <td class='docblock'><p>Some or all of the output data will be used to prime the stream, input data may be zero</p>
-&nbsp;</td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.PRIMING_OUTPUT.html'
+                               title='portaudio::stream::PRIMING_OUTPUT'>PRIMING_OUTPUT</a></td>
+                        <td class='docblock short'><p>Some or all of the output data will be used to prime the stream, input data may be zero</p>
+</td>
                     </tr>
                 </table><h2 id='statics' class='section-header'><a href="#statics">Statics</a></h2>
 <table>
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static FRAMES_PER_BUFFER_UNSPECIFIED: <a href='http://doc.rust-lang.org/nightly/std/primitive.u64.html'>u64</a></code><code> = </code><code>0</code></td>
-                        <td class='docblock'><p>Argument to Stream::open() or Stream::open_default() to allow PortAudio itself determine the
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='static' href='static.FRAMES_PER_BUFFER_UNSPECIFIED.html'
+                               title='portaudio::stream::FRAMES_PER_BUFFER_UNSPECIFIED'>FRAMES_PER_BUFFER_UNSPECIFIED</a></td>
+                        <td class='docblock short'><p>Argument to Stream::open() or Stream::open_default() to allow PortAudio itself determine the
 optimal number of frames per buffer. This number may differ each time the callback is called.</p>
-&nbsp;</td>
+</td>
                     </tr>
                 </table><h2 id='traits' class='section-header'><a href="#traits">Traits</a></h2>
 <table>
