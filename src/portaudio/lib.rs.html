@@ -141,6 +141,7 @@
 
 <span class='kw'>extern</span> <span class='kw'>crate</span> <span class='ident'>libc</span>;
 <span class='attribute'>#[<span class='ident'>phase</span>(<span class='ident'>plugin</span>, <span class='ident'>link</span>)]</span> <span class='kw'>extern</span> <span class='kw'>crate</span> <span class='ident'>log</span>;
+<span class='kw'>extern</span> <span class='kw'>crate</span> <span class='string'>&quot;portaudio-sys&quot;</span> <span class='kw'>as</span> <span class='ident'>ll</span>;
 
 <span class='kw'>pub</span> <span class='kw'>use</span> <span class='ident'>pa</span>::{<span class='ident'>PaError</span>, <span class='ident'>PaResult</span>, <span class='ident'>initialize</span>, <span class='ident'>terminate</span>, <span class='ident'>version</span>, <span class='ident'>version_text</span>};
 
@@ -149,7 +150,6 @@
 <span class='kw'>pub</span> <span class='kw'>mod</span> <span class='ident'>hostapi</span>;
 <span class='kw'>pub</span> <span class='kw'>mod</span> <span class='ident'>device</span>;
 
-<span class='kw'>mod</span> <span class='ident'>ll</span>;
 <span class='kw'>mod</span> <span class='ident'>util</span>;
 </pre>
 </section>
