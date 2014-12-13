@@ -193,6 +193,7 @@
 <span id='151'>151</span>
 <span id='152'>152</span>
 <span id='153'>153</span>
+<span id='154'>154</span>
 </pre><pre class='rust '>
 <span class='doccomment'>//! Info module for available audio host API&#39;s</span>
 
@@ -201,11 +202,12 @@
 <span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>c_str</span>::<span class='ident'>CString</span>;
 <span class='kw'>use</span> <span class='ident'>util</span>::<span class='ident'>to_pa_result</span>;
 
+<span class='doccomment'>/// Index number of a Host API</span>
 <span class='kw'>pub</span> <span class='kw'>type</span> <span class='ident'>HostApiIndex</span> <span class='op'>=</span> <span class='ident'>uint</span>;
 
 <span class='doccomment'>/// Possible Host API types</span>
 <span class='attribute'>#[<span class='ident'>repr</span>(<span class='ident'>u32</span>)]</span>
-<span class='attribute'>#[<span class='ident'>deriving</span>(<span class='ident'>FromPrimitive</span>)]</span>
+<span class='attribute'>#[<span class='ident'>deriving</span>(<span class='ident'>FromPrimitive</span>, <span class='ident'>Copy</span>)]</span>
 <span class='attribute'>#[<span class='ident'>allow</span>(<span class='ident'>missing_docs</span>)]</span>
 <span class='kw'>pub</span> <span class='kw'>enum</span> <span class='ident'>HostApiType</span>
 {
