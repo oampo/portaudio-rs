@@ -642,8 +642,6 @@
 <span id='600'>600</span>
 <span id='601'>601</span>
 <span id='602'>602</span>
-<span id='603'>603</span>
-<span id='604'>604</span>
 </pre><pre class='rust '>
 <span class='doccomment'>//! Contains the Stream class and associated values</span>
 
@@ -713,7 +711,6 @@
 }
 
 <span class='macro'>bitflags</span><span class='macro'>!</span>(
-    <span class='attribute'>#[<span class='ident'>deriving</span>(<span class='ident'>Copy</span>)]</span>
     <span class='attribute'>#[<span class='ident'>doc</span><span class='op'>=</span><span class='string'>&quot;Flags indicating the status of the callback&quot;</span>]</span>
     <span class='ident'>flags</span> <span class='ident'>StreamCallbackFlags</span>: <span class='ident'>u64</span> {
         <span class='attribute'>#[<span class='ident'>doc</span><span class='op'>=</span><span class='string'>&quot;Indicates that the callback has inserted one or more zeroes since not enough data was available&quot;</span>]</span>
@@ -734,7 +731,6 @@
 )
 
 <span class='macro'>bitflags</span><span class='macro'>!</span>(
-    <span class='attribute'>#[<span class='ident'>deriving</span>(<span class='ident'>Copy</span>)]</span>
     <span class='attribute'>#[<span class='ident'>doc</span><span class='op'>=</span><span class='string'>&quot;Flags used to control the behavior of a stream&quot;</span>]</span>
     <span class='ident'>flags</span> <span class='ident'>StreamFlags</span>: <span class='ident'>u64</span> {
         <span class='attribute'>#[<span class='ident'>doc</span><span class='op'>=</span><span class='string'>&quot;Disable clipping of out of range samples&quot;</span>]</span>
