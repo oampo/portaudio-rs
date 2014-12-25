@@ -642,6 +642,9 @@
 <span id='600'>600</span>
 <span id='601'>601</span>
 <span id='602'>602</span>
+<span id='603'>603</span>
+<span id='604'>604</span>
+<span id='605'>605</span>
 </pre><pre class='rust '>
 <span class='doccomment'>//! Contains the Stream class and associated values</span>
 
@@ -653,6 +656,9 @@
 <span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>mem</span>;
 <span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>time</span>::<span class='ident'>duration</span>::<span class='ident'>Duration</span>;
 <span class='kw'>use</span> <span class='ident'>libc</span>::<span class='ident'>c_void</span>;
+
+<span class='kw'>type</span> <span class='ident'>StreamCallbackType</span> <span class='op'>=</span> <span class='kw'>extern</span> <span class='string'>&quot;C&quot;</span> <span class='kw'>fn</span>(<span class='op'>*</span><span class='kw'>const</span> <span class='ident'>c_void</span>, <span class='op'>*</span><span class='kw-2'>mut</span> <span class='ident'>c_void</span>, ::<span class='ident'>libc</span>::<span class='ident'>c_ulong</span>, <span class='op'>*</span><span class='kw'>const</span> <span class='ident'>ll</span>::<span class='ident'>PaStreamCallbackTimeInfo</span>, <span class='ident'>ll</span>::<span class='ident'>PaStreamCallbackFlags</span>, <span class='op'>*</span><span class='kw-2'>mut</span> <span class='ident'>c_void</span>) <span class='op'>-&gt;</span> ::<span class='ident'>libc</span>::<span class='ident'>c_int</span>;
+<span class='kw'>type</span> <span class='ident'>StreamFinishedCallbackType</span> <span class='op'>=</span> <span class='kw'>extern</span> <span class='string'>&quot;C&quot;</span> <span class='kw'>fn</span>(<span class='op'>*</span><span class='kw-2'>mut</span> <span class='ident'>c_void</span>);
 
 <span class='doccomment'>/// Allowable return values for a StreamCallback</span>
 <span class='attribute'>#[<span class='ident'>repr</span>(<span class='ident'>u32</span>)]</span>
@@ -867,7 +873,7 @@
     {
         <span class='kw'>let</span> <span class='ident'>callback_pointer</span> <span class='op'>=</span> <span class='kw'>match</span> <span class='ident'>callback</span>
         {
-            <span class='prelude-val'>Some</span>(_) <span class='op'>=&gt;</span> <span class='prelude-val'>Some</span>(<span class='ident'>stream_callback</span>::<span class='op'>&lt;</span><span class='ident'>T</span>, <span class='ident'>T</span><span class='op'>&gt;</span>),
+            <span class='prelude-val'>Some</span>(_) <span class='op'>=&gt;</span> <span class='prelude-val'>Some</span>(<span class='ident'>stream_callback</span>::<span class='op'>&lt;</span><span class='ident'>T</span>, <span class='ident'>T</span><span class='op'>&gt;</span> <span class='kw'>as</span> <span class='ident'>StreamCallbackType</span>),
             <span class='prelude-val'>None</span> <span class='op'>=&gt;</span> <span class='prelude-val'>None</span>,
         };
         <span class='kw'>let</span> <span class='ident'>userdata</span> <span class='op'>=</span> <span class='kw'>box</span> <span class='ident'>StreamUserData</span>
@@ -929,7 +935,7 @@
     {
         <span class='kw'>let</span> <span class='ident'>callback_pointer</span> <span class='op'>=</span> <span class='kw'>match</span> <span class='ident'>callback</span>
         {
-            <span class='prelude-val'>Some</span>(_) <span class='op'>=&gt;</span> <span class='prelude-val'>Some</span>(<span class='ident'>stream_callback</span>::<span class='op'>&lt;</span><span class='ident'>I</span>, <span class='ident'>O</span><span class='op'>&gt;</span>),
+            <span class='prelude-val'>Some</span>(_) <span class='op'>=&gt;</span> <span class='prelude-val'>Some</span>(<span class='ident'>stream_callback</span>::<span class='op'>&lt;</span><span class='ident'>I</span>, <span class='ident'>O</span><span class='op'>&gt;</span> <span class='kw'>as</span> <span class='ident'>StreamCallbackType</span>),
             <span class='prelude-val'>None</span> <span class='op'>=&gt;</span> <span class='prelude-val'>None</span>,
         };
 
@@ -1114,7 +1120,7 @@
     <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>set_finished_callback</span>(<span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='self'>self</span>, <span class='ident'>finished_callback</span>: <span class='ident'>StreamFinishedCallback</span><span class='op'>&lt;</span><span class='lifetime'>&#39;a</span><span class='op'>&gt;</span>) <span class='op'>-&gt;</span> <span class='ident'>PaResult</span>
     {
         <span class='self'>self</span>.<span class='ident'>user_data</span>.<span class='ident'>finished_callback</span> <span class='op'>=</span> <span class='prelude-val'>Some</span>(<span class='ident'>finished_callback</span>);
-        <span class='kw'>let</span> <span class='ident'>callback_pointer</span> <span class='op'>=</span> <span class='prelude-val'>Some</span>(<span class='ident'>stream_finished_callback</span>::<span class='op'>&lt;</span><span class='ident'>I</span>, <span class='ident'>O</span><span class='op'>&gt;</span>);
+        <span class='kw'>let</span> <span class='ident'>callback_pointer</span> <span class='op'>=</span> <span class='prelude-val'>Some</span>(<span class='ident'>stream_finished_callback</span>::<span class='op'>&lt;</span><span class='ident'>I</span>, <span class='ident'>O</span><span class='op'>&gt;</span> <span class='kw'>as</span> <span class='ident'>StreamFinishedCallbackType</span>);
         <span class='ident'>to_pa_result</span>(<span class='kw'>unsafe</span> { <span class='ident'>ll</span>::<span class='ident'>Pa_SetStreamFinishedCallback</span>(<span class='self'>self</span>.<span class='ident'>pa_stream</span>, <span class='ident'>callback_pointer</span>) })
     }
 
@@ -1238,8 +1244,8 @@
 
         <span class='kw'>unsafe</span>
         {
-            <span class='macro'>assert_eq</span><span class='macro'>!</span>(<span class='ident'>mem</span>::<span class='ident'>transmute</span>::<span class='op'>&lt;</span><span class='prelude-ty'>Option</span><span class='op'>&lt;</span><span class='kw'>extern</span> <span class='string'>&quot;C&quot;</span> <span class='kw'>fn</span>()<span class='op'>&gt;</span>, <span class='op'>*</span><span class='kw'>const</span> <span class='ident'>c_void</span><span class='op'>&gt;</span>(<span class='prelude-val'>Some</span>(<span class='ident'>external_function</span>)), <span class='ident'>external_function</span> <span class='kw'>as</span> <span class='op'>*</span><span class='kw'>const</span> <span class='ident'>c_void</span>);
-            <span class='macro'>assert_eq</span><span class='macro'>!</span>(<span class='ident'>mem</span>::<span class='ident'>transmute</span>::<span class='op'>&lt;</span><span class='prelude-ty'>Option</span><span class='op'>&lt;</span><span class='kw'>extern</span> <span class='string'>&quot;C&quot;</span> <span class='kw'>fn</span>()<span class='op'>&gt;</span>, <span class='op'>*</span><span class='kw'>const</span> <span class='ident'>c_void</span><span class='op'>&gt;</span>(<span class='prelude-val'>None</span>)                   , <span class='ident'>ptr</span>::<span class='ident'>null</span>());
+            <span class='macro'>assert_eq</span><span class='macro'>!</span>(<span class='ident'>mem</span>::<span class='ident'>transmute</span>::<span class='op'>&lt;</span><span class='prelude-ty'>Option</span><span class='op'>&lt;</span><span class='kw'>extern</span> <span class='string'>&quot;C&quot;</span> <span class='kw'>fn</span>()<span class='op'>&gt;</span>, <span class='op'>*</span><span class='kw'>const</span> <span class='ident'>c_void</span><span class='op'>&gt;</span>(<span class='prelude-val'>Some</span>(<span class='ident'>external_function</span> <span class='kw'>as</span> <span class='kw'>extern</span> <span class='string'>&quot;C&quot;</span> <span class='kw'>fn</span>())), <span class='ident'>external_function</span> <span class='kw'>as</span> <span class='op'>*</span><span class='kw'>const</span> <span class='ident'>c_void</span>);
+            <span class='macro'>assert_eq</span><span class='macro'>!</span>(<span class='ident'>mem</span>::<span class='ident'>transmute</span>::<span class='op'>&lt;</span><span class='prelude-ty'>Option</span><span class='op'>&lt;</span><span class='kw'>extern</span> <span class='string'>&quot;C&quot;</span> <span class='kw'>fn</span>()<span class='op'>&gt;</span>, <span class='op'>*</span><span class='kw'>const</span> <span class='ident'>c_void</span><span class='op'>&gt;</span>(<span class='prelude-val'>None</span>), <span class='ident'>ptr</span>::<span class='ident'>null</span>());
         }
     }
 
